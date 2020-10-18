@@ -5,5 +5,6 @@ public class MainProgram {
         System.out.println("Witam na zajęciach java zaawansowana - programowanie");
         System.out.println("Grupa ZDJAVApol33");
         System.out.println("Pracujemy na branch zgodnym z nazwą grupy");
+        System.out.println("Testujemy sobie patch");
     }
 }
