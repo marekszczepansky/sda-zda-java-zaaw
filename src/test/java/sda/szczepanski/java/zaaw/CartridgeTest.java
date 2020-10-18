@@ -32,6 +32,13 @@ class CartridgeTest {
     }
 
     @Test
+    void shouldThrowExceptionWhenLoadFull() {
+        assertThrows(Exception.class, () -> {
+           loadedCartridge.loadBullet("test bullet");
+        });
+    }
+
+    @Test
     void shouldShotWhenEmpty() {
         assertEquals("pusty magazynek", emptyCartridge.shot());
     }
