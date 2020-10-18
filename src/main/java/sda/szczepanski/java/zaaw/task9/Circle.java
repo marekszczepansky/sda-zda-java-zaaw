@@ -1,8 +1,11 @@
 package sda.szczepanski.java.zaaw.task9;
 
+import sda.szczepanski.java.zaaw.task10.Movable;
+import sda.szczepanski.java.zaaw.task10.MoveDirection;
+
 import java.util.List;
 
-public class Circle {
+public class Circle implements Movable {
     private final Point2D center;
     private final Point2D point;
 
@@ -33,5 +36,10 @@ public class Circle {
 
     List<Point2D> getSlicePoints() {
         return null;
+    }
+
+    @Override
+    public void move(MoveDirection moveDirection) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 }
