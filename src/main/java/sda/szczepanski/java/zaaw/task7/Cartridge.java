@@ -1,4 +1,4 @@
-package sda.szczepanski.java.zaaw;
+package sda.szczepanski.java.zaaw.task7;
 
 import java.util.Stack;
 
@@ -11,17 +11,17 @@ public class Cartridge {
         content = new Stack<>();
     }
 
-    void loadBullet(String bullet) {
+    public void loadBullet(String bullet) {
         if (content.size() >= cartridgeSize)
             throw new CartridgeSizeExceeded();
         content.push(bullet);
     }
 
-    Boolean isLoaded() {
+    public Boolean isLoaded() {
         return !content.empty();
     }
 
-    String shot() {
+    public String shot() {
         return content.empty() ? "pusty magazynek" : content.pop();
     }
 }
