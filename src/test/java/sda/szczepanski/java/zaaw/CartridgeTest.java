@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CartridgeTest {
 
-    private static String[] TEST_LOAD = new String[]{"Bardzo", "szybkostrzelny", "karabin", "testowy"};
-    private static int cartridgeSize = TEST_LOAD.length;
+    private static final String[] TEST_LOAD = new String[]{"Bardzo", "szybkostrzelny", "karabin", "testowy"};
+    private static final int cartridgeSize = TEST_LOAD.length;
     private Cartridge emptyCartridge;
     private Cartridge loadedCartridge;
 
