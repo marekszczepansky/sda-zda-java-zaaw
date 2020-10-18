@@ -2,10 +2,11 @@ package sda.szczepanski.java.zaaw.task9;
 
 import sda.szczepanski.java.zaaw.task10.Movable;
 import sda.szczepanski.java.zaaw.task10.MoveDirection;
+import sda.szczepanski.java.zaaw.task11.Resizable;
 
 import java.util.List;
 
-public class Circle implements Movable {
+public class Circle implements Movable, Resizable {
     private final Point2D center;
     private final Point2D point;
 
@@ -42,5 +43,10 @@ public class Circle implements Movable {
     public void move(MoveDirection moveDirection) {
         center.move(moveDirection);
         point.move(moveDirection);
+    }
+
+    @Override
+    public void resize(double resizeFactor) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 }
