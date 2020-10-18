@@ -21,19 +21,22 @@ class CircleResizableTest {
     void shouldScaleLinearCalculations() {
         final double radius = circle.getRadius();
         final double perimeter = circle.getPerimeter();
+        final double expectedRadius = radius * TEST_RESIZE_FACTOR;
+        final double expectedPerimeter = perimeter * TEST_RESIZE_FACTOR;
 
         circle.resize(TEST_RESIZE_FACTOR);
 
-        assertEquals(radius * TEST_RESIZE_FACTOR, circle.getRadius());
-        assertEquals(perimeter * TEST_RESIZE_FACTOR, circle.getPerimeter());
+        assertEquals(expectedRadius, circle.getRadius());
+        assertEquals(expectedPerimeter, circle.getPerimeter());
     }
 
     @Test
     void shouldScaleNonLinearCalculations() {
         final double area = circle.getArea();
+        final double expectedArea = area * TEST_RESIZE_FACTOR * TEST_RESIZE_FACTOR;
 
         circle.resize(TEST_RESIZE_FACTOR);
 
-        assertEquals(area * TEST_RESIZE_FACTOR * TEST_RESIZE_FACTOR, circle.getArea());
+        assertEquals(expectedArea, circle.getArea());
     }
 }
