@@ -1,8 +1,8 @@
-package sda.szczepanski.java.zaaw;
+package sda.szczepanski.java.zaaw.task1and2;
 
 import org.junit.jupiter.api.Test;
+import sda.szczepanski.java.zaaw.task1and2.SmallTasks;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

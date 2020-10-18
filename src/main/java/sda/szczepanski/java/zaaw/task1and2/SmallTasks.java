@@ -1,4 +1,4 @@
-package sda.szczepanski.java.zaaw;
+package sda.szczepanski.java.zaaw.task1and2;
 
 import java.util.List;
 
