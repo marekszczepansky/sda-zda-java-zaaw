@@ -46,6 +46,7 @@ public class Point2D implements Movable {
 
     @Override
     public void move(MoveDirection moveDirection) {
-        throw new UnsupportedOperationException("Not implemented");
+        x = x + moveDirection.getX();
+        y = y + moveDirection.getY();
     }
 }
