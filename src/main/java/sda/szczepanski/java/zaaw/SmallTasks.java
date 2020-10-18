@@ -9,6 +9,6 @@ public class SmallTasks {
     }
 
     public static List<String> alphabetZtoACISortedList(List<String> list){
-        return null;
+        return list.stream().sorted(String.CASE_INSENSITIVE_ORDER.reversed()).collect(Collectors.toList());
     }
 }
