@@ -47,6 +47,8 @@ public class Circle implements Movable, Resizable {
 
     @Override
     public void resize(double resizeFactor) {
-        throw new UnsupportedOperationException("Not implemented");
+        final double newRadius = getRadius() * resizeFactor;
+        point.setY(center.getY());
+        point.setX(center.getX() + newRadius);
     }
 }

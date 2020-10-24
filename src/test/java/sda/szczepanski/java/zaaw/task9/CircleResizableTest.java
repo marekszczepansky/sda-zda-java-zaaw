@@ -10,6 +10,7 @@ class CircleResizableTest {
     private static final Point2D TEST_CENTER = new Point2D(10.0, 20.0);
     private static final Point2D TEST_POINT = new Point2D(13.0, 24.0);
     private static final double TEST_RESIZE_FACTOR = 2.5;
+    public static final double ASSERT_DELTA = 0.00001;
     private Circle circle;
 
     @BeforeEach
@@ -26,8 +27,8 @@ class CircleResizableTest {
 
         circle.resize(TEST_RESIZE_FACTOR);
 
-        assertEquals(expectedRadius, circle.getRadius());
-        assertEquals(expectedPerimeter, circle.getPerimeter());
+        assertEquals(expectedRadius, circle.getRadius(), ASSERT_DELTA);
+        assertEquals(expectedPerimeter, circle.getPerimeter(), ASSERT_DELTA);
     }
 
     @Test
@@ -37,6 +38,6 @@ class CircleResizableTest {
 
         circle.resize(TEST_RESIZE_FACTOR);
 
-        assertEquals(expectedArea, circle.getArea());
+        assertEquals(expectedArea, circle.getArea(), ASSERT_DELTA);
     }
 }
