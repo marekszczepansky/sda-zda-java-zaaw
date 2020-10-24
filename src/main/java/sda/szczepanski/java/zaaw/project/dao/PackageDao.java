@@ -12,8 +12,6 @@ import java.util.List;
  * - JDBC
  * - Hibernate
  */
-public interface PackageDao {
-    void create(Package aPackage);
-    List<Package> getAll();
+public interface PackageDao extends EntityDao<Package> {
     List<Package> findPriceLowerOrEqual(double price);
 }

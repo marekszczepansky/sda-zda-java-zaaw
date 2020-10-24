@@ -13,9 +13,7 @@ import java.util.Optional;
  * - JDBC
  * - Hibernate
  */
-public interface CustomerDao {
-    void create(Customer customer);
-    List<Customer> getAll();
+public interface CustomerDao extends EntityDao<Customer> {
     List<Customer> findByName(String name);
     Optional<Customer> findByEmail(String email);
 }

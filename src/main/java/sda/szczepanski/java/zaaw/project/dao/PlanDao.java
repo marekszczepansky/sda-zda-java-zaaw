@@ -15,9 +15,7 @@ import java.util.Set;
  * - JDBC
  * - Hibernate
  */
-public interface PlanDao {
-    void create(Plan plan);
-    List<Plan> getAll();
+public interface PlanDao extends EntityDao<Plan>{
     List<Plan> findPlanContainingPackages(Set<Package> packages);
     List<Plan> findPlanForDurationShorterOrEqual(Duration duration);
 }

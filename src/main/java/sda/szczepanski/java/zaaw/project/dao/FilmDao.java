@@ -14,9 +14,7 @@ import java.util.List;
  * - JDBC
  * - Hibernate
  */
-public interface FilmDao {
-    void create(Film film);
-    List<Film> getAll();
+public interface FilmDao extends EntityDao<Film> {
     List<Film> findByTitle(String title);
     List<Film> findByLanguage(Language language);
     List<Film> findByPackage(Package aPackage);
