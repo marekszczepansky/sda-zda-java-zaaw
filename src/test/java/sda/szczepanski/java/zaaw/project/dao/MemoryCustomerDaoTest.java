@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 /**
  * Test testujący implementację {@link CustomerDao} poprzez klasę {@link MemoryCustomerDao}
@@ -47,7 +48,7 @@ class MemoryCustomerDaoTest {
 
     @Test
     void shouldCreateCustomer() {
-        final Customer customer = new Customer("4", "Michał Anioł", "michal@sda.test", 33, null);
+        final Customer customer = mock(Customer.class);
 
         customerDao.create(customer);
 
