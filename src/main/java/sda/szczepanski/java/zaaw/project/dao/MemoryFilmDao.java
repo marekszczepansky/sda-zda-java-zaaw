@@ -5,31 +5,59 @@ import sda.szczepanski.java.zaaw.project.entity.Film;
 import sda.szczepanski.java.zaaw.project.entity.Package;
 import sda.szczepanski.java.zaaw.project.entity.Language;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MemoryFilmDao extends MemoryEntityDao<Film> implements FilmDao {
     @Override
     public List<Film> findByTitle(String title) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (title == null) {
+            return Collections.emptyList();
+        }
+        return entityDB.stream()
+                .filter(film -> title.equalsIgnoreCase(film.getTitle()))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Film> findByLanguage(Language language) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (language == null) {
+            return Collections.emptyList();
+        }
+        return entityDB.stream()
+                .filter(film -> film.getLanguages().contains(language))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Film> findByPackage(Package aPackage) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (aPackage == null) {
+            return Collections.emptyList();
+        }
+        return entityDB.stream()
+                .filter(film -> aPackage.equals(film.getaPackage()))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Film> findByAgeAndLanguage(AgeCategory ageCategory, Language language) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (ageCategory == null || language == null) {
+            return Collections.emptyList();
+        }
+
+        return entityDB.stream()
+                .filter(film -> ageCategory.equals(film.getAgeCategory()) && film.getLanguages().contains(language))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Film> findByGenre(String genre) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (genre == null) {
+            return Collections.emptyList();
+        }
+        return entityDB.stream()
+                .filter(film -> genre.equalsIgnoreCase(film.getGenre()))
+                .collect(Collectors.toList());
     }
 }

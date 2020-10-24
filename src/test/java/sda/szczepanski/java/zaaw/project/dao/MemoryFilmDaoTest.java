@@ -72,6 +72,7 @@ class MemoryFilmDaoTest {
         entityDB.add(TEST_FILM_1);
         entityDB.add(TEST_FILM_2);
         entityDB.add(TEST_FILM_3);
+        entityDB.add(TEST_FILM_4);
     }
 
     @Test
