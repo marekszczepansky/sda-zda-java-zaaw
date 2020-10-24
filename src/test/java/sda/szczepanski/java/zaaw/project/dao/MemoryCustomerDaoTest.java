@@ -13,7 +13,8 @@ class MemoryCustomerDaoTest {
 
     public static final String TEST_NAME = "Marek Szczepański";
     public static final Customer TEST_CUSTOMER_1 = new Customer("1", TEST_NAME, "marek@sda.test", 18, null);
-    public static final Customer TEST_CUSTOMER_2 = new Customer("2", "Tomasz Wojtkowiak", "tomasz@sda.test", 13, null);
+    public static final String TEST_EMAIL = "tomasz@sda.test";
+    public static final Customer TEST_CUSTOMER_2 = new Customer("2", "Tomasz Wojtkowiak", TEST_EMAIL, 13, null);
     public static final Customer TEST_CUSTOMER_3 = new Customer("3", TEST_NAME, "marek2@sda.test", 35, null);
     private MemoryCustomerDao memoryCustomerDao;
     private CustomerDao customerDao;
@@ -53,6 +54,24 @@ class MemoryCustomerDaoTest {
 
         final List<Customer> customerDaoByName = customerDao.findByName(TEST_NAME);
 
-        assertTrue(memoryCustomerDao.customerDB.containsAll(expectedCustomers));
+        assertEquals(expectedCustomers.size(), customerDaoByName.size());
+        assertTrue(customerDaoByName.containsAll(expectedCustomers));
+    }
+
+    @Test
+    void shouldGetAll() {
+
+        final List<Customer> allCustomers = customerDao.getAll();
+
+        assertEquals(memoryCustomerDao.customerDB.size(), allCustomers.size());
+        assertTrue(memoryCustomerDao.customerDB.containsAll(allCustomers));
+    }
+
+    @Test
+    void shouldFindByEmail() {
+
+        final Customer customerDaoByEmail = customerDao.findByEmail(TEST_EMAIL);
+
+        assertEquals(TEST_CUSTOMER_2, customerDaoByEmail);
     }
 }
