@@ -23,7 +23,7 @@ class MemoryCustomerDaoTest {
 
 
     /**
-     * dostęp bezpośredni do implementacji (widoczność {@link MemoryCustomerDao#customerDB})
+     * dostęp bezpośredni do implementacji (widoczność {@link MemoryCustomerDao#entityDB})
      */
     private MemoryCustomerDao memoryCustomerDao;
 
@@ -40,9 +40,9 @@ class MemoryCustomerDaoTest {
         memoryCustomerDao = new MemoryCustomerDao();
         customerDao = memoryCustomerDao;
 
-        memoryCustomerDao.customerDB.add(TEST_CUSTOMER_1);
-        memoryCustomerDao.customerDB.add(TEST_CUSTOMER_2);
-        memoryCustomerDao.customerDB.add(TEST_CUSTOMER_3);
+        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_1);
+        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_2);
+        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_3);
     }
 
     @Test
@@ -51,7 +51,7 @@ class MemoryCustomerDaoTest {
 
         customerDao.create(customer);
 
-        assertTrue(memoryCustomerDao.customerDB.contains(customer));
+        assertTrue(memoryCustomerDao.entityDB.contains(customer));
     }
 
     @Test
@@ -79,8 +79,8 @@ class MemoryCustomerDaoTest {
 
         final List<Customer> allCustomers = customerDao.getAll();
 
-        assertEquals(memoryCustomerDao.customerDB.size(), allCustomers.size());
-        assertTrue(memoryCustomerDao.customerDB.containsAll(allCustomers));
+        assertEquals(memoryCustomerDao.entityDB.size(), allCustomers.size());
+        assertTrue(memoryCustomerDao.entityDB.containsAll(allCustomers));
     }
 
     @Test
