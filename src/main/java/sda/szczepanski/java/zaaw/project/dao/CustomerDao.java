@@ -8,5 +8,5 @@ public interface CustomerDao {
     void create(Customer customer);
     List<Customer> getAll();
     List<Customer> findByName(String name);
-    List<Customer> findByEmail(String email);
+    Customer findByEmail(String email);
 }
