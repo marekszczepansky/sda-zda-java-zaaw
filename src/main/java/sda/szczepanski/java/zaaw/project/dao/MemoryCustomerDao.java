@@ -6,9 +6,14 @@ import sda.szczepanski.java.zaaw.project.entity.Customer;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Implementacja {@link CustomerDao} z uzyciem {@link HashSet}
+ * przechowującego dane w pamięci
+ */
 public class MemoryCustomerDao implements CustomerDao {
 
     @VisibleForTests
@@ -21,7 +26,7 @@ public class MemoryCustomerDao implements CustomerDao {
 
     @Override
     public List<Customer> getAll() {
-        throw new UnsupportedOperationException("Not implemented");
+        return List.copyOf(customerDB);
     }
 
     @Override
@@ -35,7 +40,12 @@ public class MemoryCustomerDao implements CustomerDao {
     }
 
     @Override
-    public Customer findByEmail(String email) {
-        throw new UnsupportedOperationException("Not implemented");
+    public Optional<Customer> findByEmail(String email) {
+        if (email == null) {
+            return Optional.empty();
+        }
+        return customerDB.stream()
+                .filter(customer -> email.equalsIgnoreCase(customer.getEmail()))
+                .findFirst();
     }
 }

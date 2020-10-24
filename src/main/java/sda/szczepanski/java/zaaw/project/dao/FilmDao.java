@@ -6,6 +6,14 @@ import sda.szczepanski.java.zaaw.project.entity.Language;
 
 import java.util.List;
 
+/**
+ * Interfejs dostępu do bazy obiektów filmy
+ * Interfejs jest uzywany przez konsumenta
+ * Implementacje można wymieniać zależnie od potrzeb
+ * - pamięć
+ * - JDBC
+ * - Hibernate
+ */
 public interface FilmDao {
     void create(Film film);
     List<Film> getAll();
