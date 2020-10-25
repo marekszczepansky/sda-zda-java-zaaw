@@ -14,6 +14,7 @@ public class Task37Main {
             executorService.submit(new ThreadPlaygroundRunnable("Test runnable no: " + i));
         }
         executorService.shutdown();
+
         System.out.println("Shutdown called");
         executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
         System.out.println("Executor finished");
