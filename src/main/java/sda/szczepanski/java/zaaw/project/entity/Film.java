@@ -1,5 +1,6 @@
 package sda.szczepanski.java.zaaw.project.entity;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -76,5 +77,66 @@ public class Film {
                 ", year=" + year +
                 ", ageCategory=" + ageCategory +
                 '}';
+    }
+
+    public static final class FilmBuilder {
+        private String title;
+        private int year;
+        private AgeCategory ageCategory;
+        private String genre;
+        private String productionCountry;
+        private List<Language> languages;
+        private Package aPackage;
+
+        private FilmBuilder() {
+        }
+
+        public static FilmBuilder aFilm() {
+            return new FilmBuilder();
+        }
+
+        public FilmBuilder withTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public FilmBuilder withYear(int year) {
+            this.year = year;
+            return this;
+        }
+
+        public FilmBuilder withAgeCategory(AgeCategory ageCategory) {
+            this.ageCategory = ageCategory;
+            return this;
+        }
+
+        public FilmBuilder withGenre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public FilmBuilder withProductionCountry(String productionCountry) {
+            this.productionCountry = productionCountry;
+            return this;
+        }
+
+        public FilmBuilder withLanguages(List<Language> languages) {
+            this.languages = languages;
+            return this;
+        }
+
+        public FilmBuilder withLanguages(Language... languages) {
+            this.languages = Arrays.asList(languages);
+            return this;
+        }
+
+        public FilmBuilder withAPackage(Package aPackage) {
+            this.aPackage = aPackage;
+            return this;
+        }
+
+        public Film build() {
+            return new Film(title, year, ageCategory, genre, productionCountry, languages, aPackage);
+        }
     }
 }
