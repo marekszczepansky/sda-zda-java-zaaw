@@ -22,6 +22,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class ThreadPlaygroundRunnableTest {
 
+    public static final int THREAD_POOL_SIZE = 3;
     @Mock
     private SimpleLogger simpleLogger;
     @InjectMocks
@@ -61,7 +62,8 @@ class ThreadPlaygroundRunnableTest {
 
         try {
             executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MICROSECONDS);
-            verify(simpleLogger, times(3)).printf(contains("interrupted"), startsWith("Test runnable no: "));
+            verify(simpleLogger, times(THREAD_POOL_SIZE))
+                    .printf(contains("interrupted"), startsWith("Test runnable no: "));
         } catch (InterruptedException e) {
             fail("awaitTermination interrupted");
         }
