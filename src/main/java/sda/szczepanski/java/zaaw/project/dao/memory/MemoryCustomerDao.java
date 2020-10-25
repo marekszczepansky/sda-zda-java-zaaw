@@ -1,5 +1,6 @@
-package sda.szczepanski.java.zaaw.project.dao;
+package sda.szczepanski.java.zaaw.project.dao.memory;
 
+import sda.szczepanski.java.zaaw.project.dao.CustomerDao;
 import sda.szczepanski.java.zaaw.project.entity.Customer;
 
 import java.util.Collections;

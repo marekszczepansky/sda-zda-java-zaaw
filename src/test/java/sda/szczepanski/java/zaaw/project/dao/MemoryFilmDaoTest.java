@@ -6,8 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import sda.szczepanski.java.zaaw.project.dao.memory.MemoryFilmDao;
 import sda.szczepanski.java.zaaw.project.entity.Film;
-import sda.szczepanski.java.zaaw.project.entity.Language;
+import sda.szczepanski.java.zaaw.project.entity.type.Language;
 import sda.szczepanski.java.zaaw.project.entity.Package;
 
 import java.util.Arrays;
@@ -22,12 +23,12 @@ import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static sda.szczepanski.java.zaaw.project.entity.AgeCategory.CHILD;
-import static sda.szczepanski.java.zaaw.project.entity.AgeCategory.PLUS16;
-import static sda.szczepanski.java.zaaw.project.entity.Language.CHINA;
-import static sda.szczepanski.java.zaaw.project.entity.Language.ENGLISH;
-import static sda.szczepanski.java.zaaw.project.entity.Language.GERMAN;
-import static sda.szczepanski.java.zaaw.project.entity.Language.POLISH;
+import static sda.szczepanski.java.zaaw.project.entity.type.AgeCategory.CHILD;
+import static sda.szczepanski.java.zaaw.project.entity.type.AgeCategory.PLUS16;
+import static sda.szczepanski.java.zaaw.project.entity.type.Language.CHINA;
+import static sda.szczepanski.java.zaaw.project.entity.type.Language.ENGLISH;
+import static sda.szczepanski.java.zaaw.project.entity.type.Language.GERMAN;
+import static sda.szczepanski.java.zaaw.project.entity.type.Language.POLISH;
 
 @ExtendWith(MockitoExtension.class)
 class MemoryFilmDaoTest {

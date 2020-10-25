@@ -1,5 +1,8 @@
 package sda.szczepanski.java.zaaw.project.entity;
 
+import sda.szczepanski.java.zaaw.project.entity.type.AgeCategory;
+import sda.szczepanski.java.zaaw.project.entity.type.Language;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;

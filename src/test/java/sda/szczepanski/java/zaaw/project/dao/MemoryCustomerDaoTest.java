@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import sda.szczepanski.java.zaaw.project.dao.memory.MemoryCustomerDao;
 import sda.szczepanski.java.zaaw.project.entity.Customer;
 
 import java.util.Arrays;
@@ -22,7 +22,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
 
 /**
  * Test testujący implementację {@link CustomerDao} poprzez klasę {@link MemoryCustomerDao}
@@ -47,7 +46,7 @@ class MemoryCustomerDaoTest {
     private Set<Customer> customerDb;
     private Set<Customer> internalCustomerDb;
     /**
-     * dostęp bezpośredni do implementacji (widoczność {@link MemoryCustomerDao#entityDB})
+     * dostęp bezpośredni do implementacji
      * {@link InjectMocks} zapewnia wywołanie konstruktora z mockiem atrybutu
      * <br><code>memoryCustomerDao = new MemoryCustomerDao(customerDb)</code>
      */

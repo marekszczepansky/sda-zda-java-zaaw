@@ -1,7 +1,7 @@
 package sda.szczepanski.java.zaaw.project.di;
 
-import sda.szczepanski.java.zaaw.project.dao.MemoryCustomerDao;
-import sda.szczepanski.java.zaaw.project.dao.MemoryFilmDao;
+import sda.szczepanski.java.zaaw.project.dao.memory.MemoryCustomerDao;
+import sda.szczepanski.java.zaaw.project.dao.memory.MemoryFilmDao;
 
 import java.util.HashMap;
 import java.util.HashSet;

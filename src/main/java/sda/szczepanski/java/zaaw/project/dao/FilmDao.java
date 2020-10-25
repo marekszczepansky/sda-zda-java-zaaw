@@ -1,9 +1,9 @@
 package sda.szczepanski.java.zaaw.project.dao;
 
-import sda.szczepanski.java.zaaw.project.entity.AgeCategory;
+import sda.szczepanski.java.zaaw.project.entity.type.AgeCategory;
 import sda.szczepanski.java.zaaw.project.entity.Film;
 import sda.szczepanski.java.zaaw.project.entity.Package;
-import sda.szczepanski.java.zaaw.project.entity.Language;
+import sda.szczepanski.java.zaaw.project.entity.type.Language;
 
 import java.util.List;
 

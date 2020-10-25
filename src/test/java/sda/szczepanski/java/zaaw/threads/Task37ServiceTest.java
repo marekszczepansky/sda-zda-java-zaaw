@@ -20,7 +20,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class ThreadPlaygroundRunnableTest {
+class Task37ServiceTest {
 
     public static final int THREAD_POOL_SIZE = 3;
     @Mock

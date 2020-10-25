@@ -1,4 +1,4 @@
-package sda.szczepanski.java.zaaw.project.dao;
+package sda.szczepanski.java.zaaw.project.dao.memory;
 
 import java.util.List;
 import java.util.Set;

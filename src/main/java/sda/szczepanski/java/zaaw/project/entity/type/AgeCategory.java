@@ -1,4 +1,4 @@
-package sda.szczepanski.java.zaaw.project.entity;
+package sda.szczepanski.java.zaaw.project.entity.type;
 
 public enum AgeCategory {
     PLUS18, PLUS16, PLUS7, CHILD

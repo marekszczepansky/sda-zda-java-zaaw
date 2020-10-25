@@ -3,12 +3,9 @@ package sda.szczepanski.java.zaaw.project;
 import sda.szczepanski.java.zaaw.project.dao.CustomerDao;
 import sda.szczepanski.java.zaaw.project.dao.FilmDao;
 import sda.szczepanski.java.zaaw.project.di.Context;
-import sda.szczepanski.java.zaaw.project.entity.AgeCategory;
+import sda.szczepanski.java.zaaw.project.entity.type.AgeCategory;
 import sda.szczepanski.java.zaaw.project.entity.Customer;
-import sda.szczepanski.java.zaaw.project.entity.Film;
-import sda.szczepanski.java.zaaw.project.entity.Language;
-
-import java.util.List;
+import sda.szczepanski.java.zaaw.project.entity.type.Language;
 
 import static sda.szczepanski.java.zaaw.project.entity.Film.FilmBuilder.aFilm;
 
