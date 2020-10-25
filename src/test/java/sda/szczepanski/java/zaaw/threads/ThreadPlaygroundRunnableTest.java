@@ -13,7 +13,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.startsWith;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -47,6 +49,19 @@ class ThreadPlaygroundRunnableTest {
                 verify(simpleLogger, times(10))
                         .printf(anyString(), anyString(), eq("Test runnable no: " + i), anyInt());
             }
+        } catch (InterruptedException e) {
+            fail("awaitTermination interrupted");
+        }
+    }
+
+    @Test
+    void shouldPrintInterruptionMessages() {
+        final ExecutorService executorService = task37Service.execute();
+        executorService.shutdownNow();
+
+        try {
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MICROSECONDS);
+            verify(simpleLogger, times(3)).printf(contains("interrupted"), startsWith("Test runnable no: "));
         } catch (InterruptedException e) {
             fail("awaitTermination interrupted");
         }
