@@ -7,9 +7,15 @@ import sda.szczepanski.java.zaaw.project.entity.Language;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MemoryFilmDao extends MemoryEntityDao<Film> implements FilmDao {
+
+    public MemoryFilmDao(Set<Film> entityDB) {
+        super(entityDB);
+    }
+
     @Override
     public List<Film> findByTitle(String title) {
         if (title == null) {

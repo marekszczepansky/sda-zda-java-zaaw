@@ -1,20 +1,22 @@
 package sda.szczepanski.java.zaaw.project.dao;
 
-import sda.szczepanski.java.zaaw.VisibleForTests;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class MemoryEntityDao<T> {
-    @VisibleForTests
-    Set<T> entityDB = new HashSet<>();
+    protected final Set<T> entityDB;
+
+    public MemoryEntityDao(Set<T> entityDB) {
+        this.entityDB = entityDB;
+    }
 
     public void create(T entity) {
         entityDB.add(entity);
     }
 
     public List<T> getAll() {
-        return List.copyOf(entityDB);
+        //noinspection SimplifyStreamApiCallChains
+        return entityDB.stream().collect(Collectors.toList());
     }
 }

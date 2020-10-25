@@ -2,21 +2,34 @@ package sda.szczepanski.java.zaaw.project.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import sda.szczepanski.java.zaaw.project.entity.Film;
-import sda.szczepanski.java.zaaw.project.entity.Package;
 import sda.szczepanski.java.zaaw.project.entity.Language;
+import sda.szczepanski.java.zaaw.project.entity.Package;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
-import static sda.szczepanski.java.zaaw.project.entity.AgeCategory.*;
-import static sda.szczepanski.java.zaaw.project.entity.Language.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static sda.szczepanski.java.zaaw.project.entity.AgeCategory.CHILD;
+import static sda.szczepanski.java.zaaw.project.entity.AgeCategory.PLUS16;
+import static sda.szczepanski.java.zaaw.project.entity.Language.CHINA;
+import static sda.szczepanski.java.zaaw.project.entity.Language.ENGLISH;
+import static sda.szczepanski.java.zaaw.project.entity.Language.GERMAN;
+import static sda.szczepanski.java.zaaw.project.entity.Language.POLISH;
 
+@ExtendWith(MockitoExtension.class)
 class MemoryFilmDaoTest {
 
     public static final String TEST_TITLE = "test title 2";
@@ -61,18 +74,22 @@ class MemoryFilmDaoTest {
             TEST_PACKAGE_2
     );
     private FilmDao filmDao;
-    private Set<Film> entityDB;
+    @Mock
+    private Set<Film> mockFilmDb;
+    private Set<Film> internalFilmDB;
+    @InjectMocks
+    MemoryFilmDao memoryFilmDao;
 
     @BeforeEach
     void setUp() {
-        MemoryFilmDao memoryFilmDao = new MemoryFilmDao();
-        filmDao = memoryFilmDao;
-        entityDB = memoryFilmDao.entityDB;
+        internalFilmDB = new HashSet<>();
+        internalFilmDB.add(TEST_FILM_1);
+        internalFilmDB.add(TEST_FILM_2);
+        internalFilmDB.add(TEST_FILM_3);
+        internalFilmDB.add(TEST_FILM_4);
+        lenient().when(mockFilmDb.stream()).thenReturn(internalFilmDB.stream());
 
-        entityDB.add(TEST_FILM_1);
-        entityDB.add(TEST_FILM_2);
-        entityDB.add(TEST_FILM_3);
-        entityDB.add(TEST_FILM_4);
+        filmDao = memoryFilmDao;
     }
 
     @Test
@@ -81,7 +98,7 @@ class MemoryFilmDaoTest {
 
         filmDao.create(newFilm);
 
-        assertTrue(entityDB.contains(newFilm));
+        verify(mockFilmDb, times(1)).add(newFilm);
     }
 
     @Test
@@ -89,8 +106,8 @@ class MemoryFilmDaoTest {
 
         final List<Film> allFilms = filmDao.getAll();
 
-        assertEquals(entityDB.size(), allFilms.size());
-        assertTrue(allFilms.containsAll(entityDB));
+        assertEquals(internalFilmDB.size(), allFilms.size());
+        assertTrue(allFilms.containsAll(internalFilmDB));
     }
 
     @Test

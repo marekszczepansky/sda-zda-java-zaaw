@@ -2,18 +2,32 @@ package sda.szczepanski.java.zaaw.project.dao;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import sda.szczepanski.java.zaaw.project.entity.Customer;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 /**
  * Test testujący implementację {@link CustomerDao} poprzez klasę {@link MemoryCustomerDao}
  */
+@ExtendWith(MockitoExtension.class)
 class MemoryCustomerDaoTest {
 
     public static final String TEST_NAME = "Marek Szczepański";
@@ -22,10 +36,22 @@ class MemoryCustomerDaoTest {
     public static final Customer TEST_CUSTOMER_2 = new Customer("2", "Tomasz Wojtkowiak", TEST_EMAIL, 13, null);
     public static final Customer TEST_CUSTOMER_3 = new Customer("3", TEST_NAME, "marek2@sda.test", 35, null);
 
+    /**
+     * Mockowanie w tym miejscu do celów dydaktycznych
+     * zastępuje przypisanie <code>mock(Customer.class)</code>
+     */
+    @Mock
+    private Customer customerMock;
 
+    @Mock
+    private Set<Customer> customerDb;
+    private Set<Customer> internalCustomerDb;
     /**
      * dostęp bezpośredni do implementacji (widoczność {@link MemoryCustomerDao#entityDB})
+     * {@link InjectMocks} zapewnia wywołanie konstruktora z mockiem atrybutu
+     * <br><code>memoryCustomerDao = new MemoryCustomerDao(customerDb)</code>
      */
+    @InjectMocks
     private MemoryCustomerDao memoryCustomerDao;
 
     /**
@@ -38,21 +64,24 @@ class MemoryCustomerDaoTest {
      */
     @BeforeEach
     void setUp() {
-        memoryCustomerDao = new MemoryCustomerDao();
-        customerDao = memoryCustomerDao;
+        internalCustomerDb = new HashSet<>();
+        internalCustomerDb.add(TEST_CUSTOMER_1);
+        internalCustomerDb.add(TEST_CUSTOMER_2);
+        internalCustomerDb.add(TEST_CUSTOMER_3);
 
-        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_1);
-        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_2);
-        memoryCustomerDao.entityDB.add(TEST_CUSTOMER_3);
+        lenient().when(customerDb.stream()).thenReturn(internalCustomerDb.stream());
+
+        customerDao = memoryCustomerDao;
     }
 
     @Test
     void shouldCreateCustomer() {
-        final Customer customer = mock(Customer.class);
+        final Customer customer = customerMock;
 
         customerDao.create(customer);
 
-        assertTrue(memoryCustomerDao.entityDB.contains(customer));
+        verify(customerDb,times(1)).add(customer);
+        verifyNoMoreInteractions(customerDb);
     }
 
     @Test
@@ -80,8 +109,8 @@ class MemoryCustomerDaoTest {
 
         final List<Customer> allCustomers = customerDao.getAll();
 
-        assertEquals(memoryCustomerDao.entityDB.size(), allCustomers.size());
-        assertTrue(memoryCustomerDao.entityDB.containsAll(allCustomers));
+        assertEquals(internalCustomerDb.size(), allCustomers.size());
+        assertTrue(internalCustomerDb.containsAll(allCustomers));
     }
 
     @Test

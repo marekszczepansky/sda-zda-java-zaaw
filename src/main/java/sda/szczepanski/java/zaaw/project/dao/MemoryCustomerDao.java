@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -13,6 +14,10 @@ import java.util.stream.Collectors;
  * przechowującego dane w pamięci
  */
 public class MemoryCustomerDao extends MemoryEntityDao<Customer> implements CustomerDao {
+
+    public MemoryCustomerDao(Set<Customer> entityDB) {
+        super(entityDB);
+    }
 
     @Override
     public List<Customer> findByName(String name) {
