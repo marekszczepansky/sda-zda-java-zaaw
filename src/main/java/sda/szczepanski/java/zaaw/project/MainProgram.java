@@ -1,14 +1,15 @@
-package sda.szczepanski.java.zaaw;
+package sda.szczepanski.java.zaaw.project;
 
 import sda.szczepanski.java.zaaw.project.dao.CustomerDao;
-import sda.szczepanski.java.zaaw.project.dao.MemoryCustomerDao;
+import sda.szczepanski.java.zaaw.project.dao.FilmDao;
+import sda.szczepanski.java.zaaw.project.di.Context;
 import sda.szczepanski.java.zaaw.project.entity.Customer;
-
-import java.util.HashSet;
 
 public class MainProgram {
 
-    private static final CustomerDao customerDao = new MemoryCustomerDao(new HashSet<>());
+    private static final Context context = Context.getInstance();
+    private static final CustomerDao customerDao = context.getDaoImplementation(CustomerDao.class);
+    private static final FilmDao filmDao = context.getDaoImplementation(FilmDao.class);
 
     public static void main(String[] args) {
         System.out.println("Witam na zajęciach java zaawansowana - programowanie");
@@ -21,6 +22,8 @@ public class MainProgram {
 
         System.out.println("Lista klientów");
         System.out.println(customerDao.getAll());
+        System.out.println("Lista filmów");
+        System.out.println(filmDao.getAll());
 
     }
 }
