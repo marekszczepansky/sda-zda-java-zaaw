@@ -23,13 +23,9 @@ public class Main {
 
         System.out.println("---");
         final Set<Map.Entry<String, Integer>> entries = language.entrySet();
-        entries.forEach(entry ->{
-            System.out.println("Klucz: " + entry.getKey() + ", Wartość: " + entry.getValue());
-        });
+        entries.forEach(entry -> System.out.println("Klucz: " + entry.getKey() + ", Wartość: " + entry.getValue()));
 
         System.out.println("---");
-        language.forEach((key, value) -> {
-            System.out.println("Klucz: " + key + ", Wartość: " + value);
-        });
+        language.forEach((key, value) -> System.out.println("Klucz: " + key + ", Wartość: " + value));
     }
 }
