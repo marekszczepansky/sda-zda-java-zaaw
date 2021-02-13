@@ -31,7 +31,5 @@ public class Main {
         language.forEach((key, value) -> {
             System.out.println("Klucz: " + key + ", Wartość: " + value);
         });
-
-
     }
 }
