@@ -15,4 +15,12 @@ public class Duck {
     public void setColour(String colour) {
         this.colour = colour;
     }
+
+    public String getDescription(){
+        return "Kaczka to miłe zwierze";
+    }
+
+    public String getSpecificDescription(){
+        return "Kaczka posiada kolor " + colour;
+    }
 }
