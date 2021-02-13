@@ -36,7 +36,7 @@ class CartridgeTest {
 
     @Test
     void shouldThrowExceptionWhenLoadFull() {
-        assertThrows(Exception.class, () -> {
+        assertThrows(CartridgeSizeExceeded.class, () -> {
            loadedCartridge.loadBullet("test bullet");
         });
     }

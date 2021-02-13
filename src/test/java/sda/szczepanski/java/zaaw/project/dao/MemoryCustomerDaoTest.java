@@ -75,11 +75,10 @@ class MemoryCustomerDaoTest {
 
     @Test
     void shouldCreateCustomer() {
-        final Customer customer = customerMock;
 
-        customerDao.create(customer);
+        customerDao.create(customerMock);
 
-        verify(customerDb,times(1)).add(customer);
+        verify(customerDb,times(1)).add(customerMock);
         verifyNoMoreInteractions(customerDb);
     }
 
