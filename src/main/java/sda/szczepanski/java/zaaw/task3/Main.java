@@ -3,6 +3,7 @@ package sda.szczepanski.java.zaaw.task3;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class Main {
 
@@ -27,5 +28,20 @@ public class Main {
 
         System.out.println("---");
         language.forEach((key, value) -> System.out.println("Klucz: " + key + ", Wartość: " + value));
+
+        System.out.println("---lambda---");
+        giveEntityString(language, System.out::println);
     }
+
+    private static void giveEntityString(Map<String, Integer> someMap, Consumer<String> consumer) {
+        final Set<String> keySet = someMap.keySet();
+        for (String key : keySet) {
+            final String text = "Klucz: " + key + ", Wartość: " + someMap.get(key);
+            consumer.accept(text);
+        }
+
+
+    }
+
+
 }
